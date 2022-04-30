@@ -1,8 +1,7 @@
 # Use image from HAProxy Docker LTS
 FROM haproxy:lts
 
-# Install OpenSSH and set the password for root to "Docker!". In this example.
-RUN echo 'Docker!' | passwd --stdin root 
+# Install OpenSSH.
 RUN apt-get update \  
      && apt-get install --yes --no-install-recommends openssh-server
 
@@ -17,3 +16,7 @@ RUN chmod +x /tmp/ssh_setup.sh \
 
 # Open port 2222 for SSH access
 EXPOSE 80 2222
+
+# Set the password for root to "Docker!" once container is started,
+# because GitHub actions can't change password whist building the image.
+CMD echo 'root:Docker!' | chpasswd
