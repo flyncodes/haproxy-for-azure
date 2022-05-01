@@ -16,6 +16,7 @@ COPY ssh_setup.sh /tmp
 RUN chmod +x /tmp/ssh_setup.sh \
    && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
 
+RUN mkdir -p /opt/startup
 COPY init_container.sh /opt/startup
 RUN chmod -R +x /opt/startup
 
