@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 
+mkdir -p /var/run/sshd
 /usr/sbin/sshd
 
 su - haproxy
