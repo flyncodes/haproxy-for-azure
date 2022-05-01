@@ -2,7 +2,7 @@
 FROM haproxy:lts
 
 # Install OpenSSH and set the password for root to "Docker!".
-RUN echo "root:Docker!" | sudo chpasswd
+RUN echo "root:Docker!" | chpasswd
 RUN apt-get update \  
      && apt-get install --yes --no-install-recommends openssh-server
 
