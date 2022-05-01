@@ -24,3 +24,5 @@ RUN chmod -R +x /opt/startup
 EXPOSE 2222
 
 ENTRYPOINT ["/opt/startup/init_container.sh"]
+
+CMD ["-f", "/usr/local/etc/haproxy/haproxy.cfg"]
