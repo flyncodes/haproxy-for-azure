@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
 
-sudo su - haproxy -c "/usr/sbin/sshd"
+/usr/sbin/sshd
+
+su - haproxy
 
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then

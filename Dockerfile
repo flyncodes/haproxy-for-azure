@@ -22,5 +22,4 @@ RUN chmod -R +x /opt/startup
 # Open port 2222 for SSH access
 EXPOSE 2222
 
-USER haproxy
 ENTRYPOINT ["/opt/startup/init_container.sh"]
