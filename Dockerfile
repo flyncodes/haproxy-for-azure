@@ -19,4 +19,4 @@ RUN chmod +x /tmp/ssh_setup.sh \
 # Open port 2222 for SSH access
 EXPOSE 2222
 
-CMD /usr/sbin/sshd && sudo su - haproxy -c "haproxy -f /usr/local/etc/haproxy/haproxy.cfg"
+CMD /usr/sbin/sshd && su - haproxy -c "haproxy -f /usr/local/etc/haproxy/haproxy.cfg"
