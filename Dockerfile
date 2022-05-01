@@ -3,8 +3,8 @@ FROM haproxy:lts
 
 USER root
 # Install OpenSSH and set the password for root to "Docker!".
-RUN echo "root:Docker!" | chpasswd \
-     && apt-get update \  
+RUN echo "root:Docker!" | chpasswd
+RUN apt-get update \  
      && apt-get install --yes --no-install-recommends openssh-server
 
 # Copy the sshd_config file to the /etc/ssh/ directory
@@ -18,3 +18,5 @@ RUN chmod +x /tmp/ssh_setup.sh \
 
 # Open port 2222 for SSH access
 EXPOSE 80 2222
+
+CMD /usr/sbin/sshd
