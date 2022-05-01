@@ -9,7 +9,7 @@ RUN apt-get update \
 
 # Copy the sshd_config file to the /etc/ssh/ directory
 COPY sshd_config /etc/ssh/
-RUN mkdir /var/run/sshd
+RUN mkdir -p /var/run/sshd
 
 # Copy and configure the ssh_setup file
 RUN mkdir -p /tmp
