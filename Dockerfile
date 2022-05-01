@@ -2,6 +2,7 @@
 FROM haproxy:lts
 
 # Install OpenSSH and set the password for root to "Docker!".
+USER root
 RUN echo "root:Docker!" | chpasswd
 RUN apt-get update \  
      && apt-get install --yes --no-install-recommends openssh-server
@@ -21,4 +22,5 @@ RUN chmod -R +x /opt/startup
 # Open port 2222 for SSH access
 EXPOSE 2222
 
+USER haproxy
 ENTRYPOINT ["/opt/startup/init_container.sh"]
