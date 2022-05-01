@@ -1,8 +1,8 @@
 # Use image from HAProxy Docker LTS
 FROM haproxy:lts
 
-USER root
 # Install OpenSSH and set the password for root to "Docker!".
+USER root
 RUN echo "root:Docker!" | chpasswd
 RUN apt-get update \  
      && apt-get install --yes --no-install-recommends openssh-server
@@ -17,8 +17,6 @@ RUN chmod +x /tmp/ssh_setup.sh \
    && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
 
 # Open port 2222 for SSH access
-EXPOSE 80 2222
+EXPOSE 2222
 
-RUN /usr/sbin/sshd
-
-USER haproxy
+CMD /usr/sbin/sshd && sudo su - haproxy -c "haproxy -f /usr/local/etc/haproxy/haproxy.cfg"
